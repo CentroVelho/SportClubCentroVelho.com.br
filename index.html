@@ -3,159 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Especial de Páscoa - SC Centro Velho</title>
+    <title>Sport Club Centro Velho - Oficial</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
-        
-        body { 
-            font-family: 'Outfit', sans-serif; 
-            scroll-behavior: smooth;
-            background-color: #f0fdf4; 
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .match-card:hover { transform: translateY(-2px); transition: all 0.2s; }
+        .gold-text { color: #D4AF37; }
+        .gold-bg { background-color: #D4AF37; }
 
-        .sccv-green-bg { background-color: #15803d; }
-        .sccv-green { color: #15803d; }
-
-        /* Fundo com a foto do time e campo que você gostou */
-        .hero-easter {
-            background: linear-gradient(rgba(21, 128, 61, 0.85), rgba(0, 0, 0, 0.7)), url('Time.jpg');
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Time.jpg');
             background-size: cover;
             background-position: center;
-            border-bottom: 6px solid #D4AF37;
         }
 
-        /* Ajuste para os escudos ficarem lado a lado */
-        .match-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
+        /* Fundo preto sólido para a página do elenco */
+        .time-header-bg {
+            background: #000000;
         }
 
-        .team-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 35%;
-            text-align: center;
-        }
+        .active-section { display: block; }
+        .hidden-section { display: none; }
+        .score-badge { white-space: nowrap; min-width: fit-content; }
 
         .team-logo {
             width: 60px;
             height: 60px;
             object-fit: contain;
-            margin-bottom: 8px;
+            margin: 0 auto 8px;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            display: block;
         }
-
-        .match-card {
-            background: white;
-            border-radius: 24px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
+        @media (max-width: 60px) {
+            .team-logo { width: 45px; height: 45px; }
         }
-        .match-card:hover { transform: translateY(-3px); }
-
-        .score-box {
-            background: #111;
-            color: #D4AF37;
-            padding: 8px 20px;
-            border-radius: 12px;
-            font-weight: 900;
-            font-size: 1.5rem;
-            border: 2px solid #D4AF37;
-        }
-
-        .active-section { display: block; }
-        .hidden-section { display: none; }
-
-        #easterModal { backdrop-filter: blur(5px); }
     </style>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9300918640593409"
+     crossorigin="anonymous"></script>
+    
 </head>
-<body class="text-slate-800">
+<body class="bg-gray-100 text-gray-900">
 
-    <!-- Modal de Feliz Páscoa -->
-    <div id="easterModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70">
-        <div class="bg-white rounded-[35px] p-8 max-w-sm w-full text-center border-4 border-[#D4AF37] shadow-2xl">
-            <div class="text-6xl mb-4">🐰</div>
-            <h2 class="text-3xl font-black text-green-900 uppercase italic mb-2">Feliz Páscoa!</h2>
-            <p class="text-slate-600 mb-6 font-medium">O SC Centro Velho deseja a todos uma Páscoa de paz, união e muitos gols!</p>
-            <button onclick="closeModal()" class="w-full sccv-green-bg text-white font-black py-4 rounded-2xl uppercase tracking-widest shadow-lg">
-                Entrar no Site
-            </button>
-        </div>
-    </div>
-
-    <!-- Navegação -->
-    <nav class="bg-white sticky top-0 z-50 border-b-2 border-[#D4AF37] shadow-sm">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center gap-2 cursor-pointer" onclick="showSection('home')">
-                <img src="Sport Club Centro Velho.png" class="w-8 h-8 object-contain">
-                <span class="text-xl font-black italic sccv-green">SCCV <span class="text-[#D4AF37]">OFFICIAL</span></span>
+    <nav class="bg-black text-white sticky top-0 z-50 border-b border-[#D4AF37]">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-2xl font-black italic gold-text cursor-pointer flex items-center gap-2" onclick="showSection('home')">
+                <i class="fas fa-shield-alt"></i> SC CENTRO VELHO
             </div>
-            <div class="flex gap-4 font-bold uppercase text-[10px]">
-                <button onclick="showSection('home')" class="hover:text-[#D4AF37]">Resultados</button>
-                <button onclick="showSection('time')" class="hover:text-[#D4AF37]">Elenco</button>
+            <div class="flex space-x-8 font-bold uppercase text-sm tracking-widest">
+                <a href="javascript:void(0)" onclick="showSection('home')" class="hover:text-[#D4AF37] transition text-gray-300">Resultados</a>
+                <a href="javascript:void(0)" onclick="showSection('time')" class="hover:text-[#D4AF37] transition text-gray-300">Elenco</a>
             </div>
         </div>
     </nav>
 
-    <!-- Home -->
     <div id="homeSection" class="active-section">
-        <header class="hero-easter text-white py-24 text-center">
-            <div class="container mx-auto px-4">
-                <div class="bg-white/10 backdrop-blur-md inline-block p-4 rounded-full mb-6 border border-white/20">
-                    <img src="Sport Club Centro Velho.png" class="w-20 h-20 object-contain mx-auto">
-                </div>
-                <h1 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter">
-                    Especial de <span class="text-[#D4AF37]">Páscoa</span> 🐰
-                </h1>
-                <p class="mt-2 font-medium text-green-100">O orgulho do Centro Velho em campo.</p>
+        <header class="hero-bg text-white py-16 border-b border-[#D4AF37]">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-6xl font-black mb-2 uppercase italic gold-text">Resultados dos Jogos</h1>
+                <p class="text-gray-200 italic font-medium tracking-wide">Acompanhe a jornada do Sport Club Centro Velho.</p>
             </div>
-        </header>
-
-        <main class="container mx-auto px-4 -mt-8">
-            <div class="max-w-3xl mx-auto">
-                <div class="bg-white p-5 rounded-2xl shadow-xl border-l-8 border-[#D4AF37] text-center mb-10">
-                    <p class="text-green-800 font-bold italic">"União e garra: nossa marca nesta Páscoa!"</p>
-                </div>
-                <div id="matchList"></div>
-            </div>
-        </main>
-    </div>
-
-    <!-- Elenco -->
-    <div id="timeSection" class="hidden-section">
-        <header class="sccv-green-bg py-12 border-b-4 border-[#D4AF37] text-center text-white">
-            <h2 class="text-3xl font-black uppercase italic">Nosso Elenco 🥚</h2>
         </header>
 
         <main class="container mx-auto px-4 py-10">
-            <!-- Texto de Parabenização -->
-            <div class="max-w-4xl mx-auto mb-12 bg-white p-8 rounded-[30px] shadow-lg border-2 border-[#D4AF37] text-center">
-                <h3 class="text-2xl font-black text-green-900 mb-4 uppercase italic">Parabéns, Thaylon! 🔥</h3>
-                <p class="text-slate-600 font-medium leading-relaxed">
-                    Queremos parabenizar o nosso atacante <strong>Thaylon</strong>, que até o momento é o nosso maior artilheiro! Parabéns também a todos os outros jogadores do elenco, pois cada gol é resultado do trabalho de todo o time. Continuem com essa garra!
-                </p>
-            </div>
+            <div class="max-w-4xl mx-auto space-y-6">
+                <h2 class="text-2xl font-black flex items-center gap-2 uppercase italic mb-8">
+                    <span class="w-8 h-1 gold-bg"></span>
+                    Temporada 2025/2026
+                </h2>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto" id="playerList"></div>
+                <div id="matchList" class="grid gap-6"></div>
+            </div>
         </main>
     </div>
 
-    <footer class="bg-green-950 text-white py-12 text-center mt-10">
-        <div class="text-2xl font-black italic text-[#D4AF37] mb-4">SC CENTRO VELHO</div>
-        <div class="flex justify-center gap-6 text-2xl opacity-50">
-            <a href="https://www.instagram.com/sportclub.centrovelho?igsh=MXA1NWowNjFtbGpycQ==" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://whatsapp.com/channel/0029VbC37ZlK0IBjlbVmdj1G" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <div id="timeSection" class="hidden-section">
+        <!-- Cabeçalho limpo apenas com a borda dourada -->
+        <header class="time-header-bg py-8 border-b border-[#D4AF37]">
+            <div class="container mx-auto px-4 text-center">
+                <!-- Textos removidos conforme pedido -->
+            </div>
+        </header>
+
+        <main class="container mx-auto px-4 py-10">
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                    <!-- Thaylon -->
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center">
+                        <div class="w-16 h-16 bg-black rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-[#D4AF37]">
+                            <i class="fas fa-user-ninja gold-text text-2xl"></i>
+                        </div>
+                        <h3 class="font-black uppercase text-sm md:text-lg">Thaylon</h3>
+                        <p class="text-[#D4AF37] font-bold text-[10px] mb-2 uppercase">Atacante</p>
+                        <div class="bg-gray-100 rounded-full py-1 px-3 inline-block text-[10px] font-bold uppercase">4 Gols</div>
+                    </div>
+
+                    <!-- John -->
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center">
+                        <div class="w-16 h-16 bg-black rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-[#D4AF37]">
+                            <i class="fas fa-user gold-text text-2xl"></i>
+                        </div>
+                        <h3 class="font-black uppercase text-sm md:text-lg">John</h3>
+                        <p class="text-[#D4AF37] font-bold text-[10px] mb-2 uppercase">Volante</p>
+                        <div class="bg-gray-100 rounded-full py-1 px-3 inline-block text-[10px] font-bold uppercase">2 Gol</div>
+                    </div>
+                    
+                    <!-- Tom -->
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center">
+                        <div class="w-16 h-16 bg-black rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-[#D4AF37]">
+                            <i class="fas fa-user gold-text text-2xl"></i>
+                        </div>
+                        <h3 class="font-black uppercase text-sm md:text-lg">Tom</h3>
+                        <p class="text-[#D4AF37] font-bold text-[10px] mb-2 uppercase">Centroavante</p>
+                        <div class="bg-gray-100 rounded-full py-1 px-3 inline-block text-[10px] font-bold uppercase">1 Gol</div>
+                    </div>
+
+                    <!-- Diego -->
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center">
+                        <div class="w-16 h-16 bg-black rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-[#D4AF37]">
+                            <i class="fas fa-user gold-text text-2xl"></i>
+                        </div>
+                        <h3 class="font-black uppercase text-sm md:text-lg">Diego</h3>
+                        <p class="text-[#D4AF37] font-bold text-[10px] mb-2 uppercase">Meia atacante</p>
+                        <div class="bg-gray-100 rounded-full py-1 px-3 inline-block text-[10px] font-bold uppercase">1 Gol</div>
+                    </div>
+
+                    <!-- Vando -->
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center">
+                        <div class="w-16 h-16 bg-black rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-[#D4AF37]">
+                            <i class="fas fa-user gold-text text-2xl"></i>
+                        </div>
+                        <h3 class="font-black uppercase text-sm md:text-lg">Vando</h3>
+                        <p class="text-[#D4AF37] font-bold text-[10px] mb-2 uppercase">Zagueiro</p>
+                        <div class="bg-gray-100 rounded-full py-1 px-3 inline-block text-[10px] font-bold uppercase">1 Gol</div>
+                    </div>
+
+                    <!-- Douglas -->
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center">
+                        <div class="w-16 h-16 bg-black rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-[#D4AF37]">
+                            <i class="fas fa-user gold-text text-2xl"></i>
+                        </div>
+                        <h3 class="font-black uppercase text-sm md:text-lg">Douglas</h3>
+                        <p class="text-[#D4AF37] font-bold text-[10px] mb-2 uppercase">Lateral direito</p>
+                        <div class="bg-gray-100 rounded-full py-1 px-3 inline-block text-[10px] font-bold uppercase">1 Gol</div>
+                    </div>
+
+                    <!-- Yuri -->
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center">
+                        <div class="w-16 h-16 bg-black rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-[#D4AF37]">
+                            <i class="fas fa-user gold-text text-2xl"></i>
+                        </div>
+                        <h3 class="font-black uppercase text-sm md:text-lg">Yuri</h3>
+                        <p class="text-[#D4AF37] font-bold text-[10px] mb-2 uppercase">Lateral direito</p>
+                        <div class="bg-gray-100 rounded-full py-1 px-3 inline-block text-[10px] font-bold uppercase">1 Gol</div>
+                    </div>
+
+                    <!-- Sabão -->
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center">
+                        <div class="w-16 h-16 bg-black rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-[#D4AF37]">
+                            <i class="fas fa-user gold-text text-2xl"></i>
+                        </div>
+                        <h3 class="font-black uppercase text-sm md:text-lg">Sabão</h3>
+                        <p class="text-[#D4AF37] font-bold text-[10px] mb-2 uppercase">Meia atacante</p>
+                        <div class="bg-gray-100 rounded-full py-1 px-3 inline-block text-[10px] font-bold uppercase">1 Gol</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="bg-black text-white py-10 border-t-2 border-[#D4AF37]">
+        <div class="container mx-auto px-4 text-center">
+            <div class="text-3xl font-black italic gold-text mb-4 uppercase">SC CENTRO VELHO</div>
+            <p class="text-gray-500 text-sm mb-6 tracking-widest uppercase">Honra • Tradição • Paixão</p>
+            <div class="flex justify-center space-x-6 text-2xl text-gray-400 mb-8">
+                <a href="https://www.instagram.com/sportclub.centrovelho?igsh=MXA1NWowNjFtbGpycQ==" target="_blank" class="hover:text-[#D4AF37] transition"><i class="fab fa-instagram"></i></a>
+                <a href="https://whatsapp.com/channel/0029VbC37ZlK0IBjlbVmdj1G" target="_blank" class="hover:text-[#D4AF37] transition"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p class="text-gray-600 text-[10px] uppercase tracking-[0.2em]">© 2026 Sport Club Centro Velho</p>
         </div>
     </footer>
 
     <script>
-        const logos = {
+        const teamLogos = {
             'SC Centro Velho': 'Sport Club Centro Velho.png',
             'EC Centro Velho': 'Sport Club Centro Velho.png',
             'LiverPool': 'LiverPool.png',
@@ -167,74 +201,125 @@
         };
 
         const matches = [
-            { date: '25/03/2026', home: 'SC Centro Velho', away: 'Resenha FC', score: '0 x 1', loc: 'Centro Velho', hS: '-', aS: 'Cabelo liso' },
-            { date: '19/03/2026', home: 'SC Centro Velho', away: 'Salgado FC', score: '1 x 3', loc: 'Centro Velho', hS: 'Tom', aS: 'Edson (2), Pangaré' },
-            { date: '15/03/2026', home: 'SC Centro Velho', away: 'LiverPool', score: '1 x 0', loc: 'Centro Velho', hS: 'John', aS: '-' },
-            { date: '01/03/2026', home: 'SC Centro Velho', away: 'AJAX', score: '3 x 1', loc: 'Centro Velho', hS: 'Douglas, Diego, Vando', aS: 'Marajar' },
-            { date: '21/02/2026', home: 'SC Centro Velho', away: 'LiverPool', score: '2 x 1', loc: 'Anajatuba', hS: 'Jhon, Yury', aS: 'Marajar' },
-            { date: '14/02/2026', home: 'SC Centro Velho', away: 'Matinha', score: '2 x 1', loc: 'Centro Velho', hS: 'Thaylon (2)', aS: 'Iniesta' },
-            { date: '21/01/2026', home: 'SC Centro Velho', away: 'Salgado FC', score: '2 x 1', loc: 'Centro Velho', hS: 'Thaylon (2)', aS: 'Gabriel' },
-            { date: '17/01/2026', home: 'SC Centro Velho', away: 'Matinha', score: '1 x 2', loc: 'Matinha', hS: 'Sabão', aS: 'Tipinho, Josiel' },
-            { date: '31/12/2025', home: 'EC Centro Velho', away: 'Juv. Salgadense', score: '0 x 2', loc: 'Salgado', hS: '-', aS: 'Daniel, Edson' }
+            {
+                date: '25/03/2026',
+                home: 'SC Centro Velho',
+                away: 'Resenha FC',
+                score: '0 x 1',
+                location: 'Centro Velho',
+                homeScorers: '-',
+                awayScorers: 'Cabelo liso'
+            },
+            {
+                date: '19/03/2026',
+                home: 'SC Centro Velho',
+                away: 'Salgado FC',
+                score: '1 x 3',
+                location: 'Centro Velho',
+                homeScorers: 'Tom',
+                awayScorers: 'Edson (2), Pangaré'
+            },
+            {
+                date: '15/03/2026',
+                home: 'SC Centro Velho',
+                away: 'LiverPool',
+                score: '1 x 0',
+                location: 'Centro Velho',
+                homeScorers: 'John',
+                awayScorers: '-'
+            },
+            {
+                date: '01/03/2026',
+                home: 'SC Centro Velho',
+                away: 'AJAX',
+                score: '3 x 1',
+                location: 'Centro Velho',
+                homeScorers: 'Douglas, Diego, Vando',
+                awayScorers: 'Marajar'
+            },
+            {
+                date: '21/02/2026',
+                home: 'SC Centro Velho',
+                away: 'LiverPool',
+                score: '2 x 1',
+                location: 'Anajatuba',
+                homeScorers: 'Jhon, Yuri',
+                awayScorers: 'Marajar'
+            },
+            {
+                date: '14/02/2026',
+                home: 'SC Centro Velho',
+                away: 'Matinha',
+                score: '2 x 1',
+                location: 'Centro Velho',
+                homeScorers: 'Thaylon (2)',
+                awayScorers: 'Iniesta'
+            },
+            {
+                date: '21/01/2026',
+                home: 'SC Centro Velho',
+                away: 'Salgado FC',
+                score: '2 x 1',
+                location: 'Centro Velho',
+                homeScorers: 'Thaylon (2)',
+                awayScorers: 'Gabriel'
+            },
+            {
+                date: '17/01/2026',
+                home: 'SC Centro Velho',
+                away: 'Matinha',
+                score: '1 x 2',
+                location: 'Matinha',
+                homeScorers: 'Sabão',
+                awayScorers: 'Tipinho, Josiel'
+            },
+            {
+                date: '31/12/2025',
+                home: 'EC Centro Velho',
+                away: 'Juv. Salgadense',
+                score: '0 x 2',
+                location: 'Salgado',
+                homeScorers: '-',
+                awayScorers: 'Daniel, Edson'
+            }
         ];
 
-        const players = [
-            { n: 'Thaylon', r: 'Atacante', g: '4 Gols' },
-            { n: 'John', r: 'Volante', g: '2 Gols' },
-            { n: 'Tom', r: 'Atacante', g: '1 Gol' },
-            { n: 'Diego', r: 'Meia', g: '1 Gol' },
-            { n: 'Vando', r: 'Zagueiro', g: '1 Gol' },
-            { n: 'Douglas', r: 'Lateral', g: '1 Gol' },
-            { n: 'Yuri', r: 'Lateral', g: '1 Gol' },
-            { n: 'Sabão', r: 'Meia', g: '1 Gol' }
-        ];
-
-        function render() {
-            document.getElementById('matchList').innerHTML = matches.map(m => `
-                <div class="match-card">
-                    <div class="flex justify-between text-[9px] font-black uppercase text-slate-400 mb-4 border-b pb-2">
-                        <span>${m.date}</span>
-                        <span>${m.loc}</span>
+        function renderMatches() {
+            const list = document.getElementById('matchList');
+            list.innerHTML = matches.map(m => `
+                <div class="match-card bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex justify-between items-center mb-4 text-[10px] md:text-[11px] font-black uppercase text-gray-400 tracking-widest border-b pb-2">
+                        <span><i class="fas fa-calendar-alt mr-1"></i> ${m.date}</span>
+                        <span><i class="fas fa-map-marker-alt mr-1"></i> ${m.location}</span>
                     </div>
-                    <div class="match-row">
-                        <div class="team-container">
-                            <img src="${logos[m.home]}" class="team-logo">
-                            <span class="font-black text-xs uppercase">${m.home}</span>
-                            <span class="text-[8px] italic text-slate-400">${m.hS}</span>
+                    <div class="flex items-center justify-between py-2">
+                        <div class="w-[35%] text-center">
+                            <img src="${teamLogos[m.home] || ''}" alt="Escudo ${m.home}" class="team-logo">
+                            <div class="font-black text-sm md:text-xl uppercase mb-1 leading-tight ${m.home.includes('Centro Velho') ? 'gold-text' : ''}">${m.home}</div>
+                            <div class="text-[9px] md:text-[10px] text-gray-500 font-bold italic">${m.homeScorers}</div>
                         </div>
-                        <div class="score-box">${m.score}</div>
-                        <div class="team-container">
-                            <img src="${logos[m.away]}" class="team-logo">
-                            <span class="font-black text-xs uppercase">${m.away}</span>
-                            <span class="text-[8px] italic text-slate-400">${m.aS}</span>
+                        <div class="w-[25%] flex flex-col items-center px-1">
+                            <div class="score-badge bg-black text-white px-3 md:px-6 py-2 rounded-lg font-black text-lg md:text-2xl shadow-lg border border-[#D4AF37]">
+                                ${m.score}
+                            </div>
+                        </div>
+                        <div class="w-[35%] text-center">
+                            <img src="${teamLogos[m.away] || ''}" alt="Escudo ${m.away}" class="team-logo">
+                            <div class="font-black text-sm md:text-xl uppercase mb-1 leading-tight ${m.away.includes('Centro Velho') ? 'gold-text' : ''}">${m.away}</div>
+                            <div class="text-[9px] md:text-[10px] text-gray-500 font-bold italic">${m.awayScorers}</div>
                         </div>
                     </div>
-                </div>
-            `).join('');
-
-            document.getElementById('playerList').innerHTML = players.map(p => `
-                <div class="bg-white p-5 rounded-2xl shadow text-center border-b-4 border-green-700">
-                    <div class="w-12 h-12 sccv-green-bg rounded-full mx-auto mb-3 flex items-center justify-center text-[#D4AF37]">
-                        <i class="fas fa-user text-xl"></i>
-                    </div>
-                    <h4 class="font-black uppercase text-xs">${p.n}</h4>
-                    <p class="text-[9px] text-[#D4AF37] font-bold uppercase mb-2">${p.r}</p>
-                    <div class="bg-green-50 text-green-700 text-[9px] font-black px-3 py-1 rounded-full inline-block">${p.g}</div>
                 </div>
             `).join('');
         }
 
         function showSection(id) {
-            document.getElementById('homeSection').className = id === 'home' ? 'active-section' : 'hidden-section';
-            document.getElementById('timeSection').className = id === 'time' ? 'active-section' : 'hidden-section';
+            document.getElementById('homeSection').className = (id === 'home') ? 'active-section' : 'hidden-section';
+            document.getElementById('timeSection').className = (id === 'time') ? 'active-section' : 'hidden-section';
             window.scrollTo(0,0);
         }
 
-        function closeModal() {
-            document.getElementById('easterModal').style.display = 'none';
-        }
-
-        window.onload = render;
+        window.onload = renderMatches;
     </script>
 </body>
 </html>
