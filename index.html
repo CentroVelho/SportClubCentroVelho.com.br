@@ -38,7 +38,7 @@
         <header id="home" class="relative py-20 hero-gradient">
             <div class="container mx-auto px-4 text-center">
                 <div class="flex justify-center mb-6">
-                    <img src="Logo%20da%20copa.webp" alt="Logo Copa 2026" class="w-48 h-auto shadow-2xl">
+                    <img src="Logo da copa.webp" alt="Logo Copa 2026" class="w-48 h-auto shadow-2xl">
                 </div>
                 <h1 class="text-5xl md:text-7xl font-black uppercase italic mb-4">Rumo ao Hexa</h1>
                 <p class="text-xl text-gray-400">O Sport Club Centro Velho vive a emoção da Copa do Mundo 2026.</p>
@@ -156,7 +156,20 @@
     <!-- SEÇÃO CLASSIFICAÇÃO -->
     <div id="section-classificacao" class="hidden-section py-16 container mx-auto px-4">
         <h2 class="text-4xl font-black uppercase italic mb-12 text-center text-white">Classificação <span class="gold-text">Copa 2026</span></h2>
-        <iframe src="https://widget.api-futebol.com.br/render/widget_21828e4f6521f9e1" title="API Futebol - Widget" style="border:1px solid #E5E7EB;border-radius:0.375rem;background:transparent;width:100%;height:520px;" referrerpolicy="unsafe-url"></iframe>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <!-- Jogos do Brasil -->
+            <div class="w-full flex flex-col items-center">
+                <h3 class="text-2xl font-bold mb-4 gold-text uppercase">Jogos do Brasil</h3>
+                <iframe src="https://widget.api-futebol.com.br/render/widget_e6adaf31f537364b" title="API Futebol - Widget" style="border:1px solid #E5E7EB;border-radius:0.375rem;background:transparent;width:100%;max-width:400px;height:330px;" referrerpolicy="unsafe-url"></iframe>
+            </div>
+
+            <!-- Tabela de Classificação -->
+            <div class="w-full flex flex-col items-center">
+                <h3 class="text-2xl font-bold mb-4 gold-text uppercase">Tabela</h3>
+                <iframe src="https://widget.api-futebol.com.br/render/widget_21828e4f6521f9e1" title="API Futebol - Widget" style="border:1px solid #E5E7EB;border-radius:0.375rem;background:transparent;width:100%;height:520px;" referrerpolicy="unsafe-url"></iframe>
+            </div>
+        </div>
     </div>
 
     <footer class="py-10 text-center border-t gold-border bg-black mt-10">
