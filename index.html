@@ -213,19 +213,123 @@
         };
 
         const matches = [
-            { date: '22/06/2026', home: 'EC Centro Velho', away: 'União Salgadense', score: '3 x 1', location: 'Salgado', homeScorers: 'Thaylon (2), Paco', awayScorers: 'Pantocha' },
-            { date: '08/05/2026', home: 'SC Centro Velho', away: 'LiverPool', score: '1 x 0', location: 'Anajatuba', homeScorers: 'Thaylon', awayScorers: '-' },
-            { date: '29/04/2026', home: 'SC Centro Velho', away: 'LiverPool', score: '1 x 2', location: 'Centro Velho', homeScorers: 'Sabão', awayScorers: 'Danielzin, Vitor' },
-            { date: '16/04/2026', home: 'SC Centro Velho', away: 'ACM', score: '2 x 0', location: 'Salgado', homeScorers: 'Thaylon (2)', awayScorers: '-' },
-            { date: '25/03/2026', home: 'SC Centro Velho', away: 'Resenha FC', score: '0 x 1', location: 'Centro Velho', homeScorers: '-', awayScorers: 'Cabelo liso' },
-            { date: '19/03/2026', home: 'SC Centro Velho', away: 'Salgado FC', score: '1 x 3', location: 'Centro Velho', homeScorers: 'Tom', awayScorers: 'Edson (2), Pangaré' },
-            { date: '15/03/2026', home: 'SC Centro Velho', away: 'LiverPool', score: '1 x 0', location: 'Centro Velho', homeScorers: 'John', awayScorers: '-' },
-            { date: '01/03/2026', home: 'SC Centro Velho', away: 'AJAX', score: '3 x 1', location: 'Centro Velho', homeScorers: 'Douglas, Diego, Vando', awayScorers: 'Marajar' },
-            { date: '21/02/2026', home: 'SC Centro Velho', away: 'LiverPool', score: '2 x 1', location: 'Anajatuba', homeScorers: 'Jhon, Yuri', awayScorers: 'Marajar' },
-            { date: '14/02/2026', home: 'SC Centro Velho', away: 'Matinha', score: '2 x 1', location: 'Centro Velho', homeScorers: 'Thaylon (2)', awayScorers: 'Iniesta' },
-            { date: '21/01/2026', home: 'SC Centro Velho', away: 'Salgado FC', score: '2 x 1', location: 'Centro Velho', homeScorers: 'Thaylon (2)', awayScorers: 'Gabriel' },
-            { date: '17/01/2026', home: 'SC Centro Velho', away: 'Matinha', score: '1 x 2', location: 'Matinha', homeScorers: 'Sabão', awayScorers: 'Tipinho, Josiel' },
-            { date: '31/12/2025', home: 'EC Centro Velho', away: 'Juv. Salgadense', score: '0 x 2', location: 'Salgado', homeScorers: '-', awayScorers: 'Daniel, Edson' }
+            {
+                date: '22/06/2026',
+                home: 'EC Centro Velho',
+                away: 'União Salgadense',
+                score: '3 x 1',
+                location: 'Salgado',
+                homeScorers: 'Thaylon (2), Paco',
+                awayScorers: 'Pantocha'
+            },
+            {
+                date: '08/05/2026',
+                home: 'SC Centro Velho',
+                away: 'LiverPool',
+                score: '1 x 0',
+                location: 'Anajatuba',
+                homeScorers: 'Thaylon',
+                awayScorers: '-'
+            },
+            {
+                date: '29/04/2026',
+                home: 'SC Centro Velho',
+                away: 'LiverPool',
+                score: '1 x 2',
+                location: 'Centro Velho',
+                homeScorers: 'Sabão',
+                awayScorers: 'Danielzin, Vitor'
+            },
+            {
+                date: '16/04/2026',
+                home: 'SC Centro Velho',
+                away: 'ACM',
+                score: '2 x 0',
+                location: 'Salgado',
+                homeScorers: 'Thaylon (2)',
+                awayScorers: '-'
+            },
+            {
+                date: '25/03/2026',
+                home: 'SC Centro Velho',
+                away: 'Resenha FC',
+                score: '0 x 1',
+                location: 'Centro Velho',
+                homeScorers: '-',
+                awayScorers: 'Cabelo liso'
+            },
+            {
+                date: '19/03/2026',
+                home: 'SC Centro Velho',
+                away: 'Salgado FC',
+                score: '1 x 3',
+                location: 'Centro Velho',
+                homeScorers: 'Tom',
+                awayScorers: 'Edson (2), Pangaré'
+            },
+            {
+                date: '15/03/2026',
+                home: 'SC Centro Velho',
+                away: 'LiverPool',
+                score: '1 x 0',
+                location: 'Centro Velho',
+                homeScorers: 'John',
+                awayScorers: '-'
+            },
+            {
+                date: '01/03/2026',
+                home: 'SC Centro Velho',
+                away: 'AJAX',
+                score: '3 x 1',
+                location: 'Centro Velho',
+                homeScorers: 'Douglas, Diego, Vando',
+                awayScorers: 'Marajar'
+            },
+            {
+                date: '21/02/2026',
+                home: 'SC Centro Velho',
+                away: 'LiverPool',
+                score: '2 x 1',
+                location: 'Anajatuba',
+                homeScorers: 'Jhon, Yuri',
+                awayScorers: 'Marajar'
+            },
+            {
+                date: '14/02/2026',
+                home: 'SC Centro Velho',
+                away: 'Matinha',
+                score: '2 x 1',
+                location: 'Centro Velho',
+                homeScorers: 'Thaylon (2)',
+                awayScorers: 'Iniesta'
+            },
+            {
+                date: '21/01/2026',
+                home: 'SC Centro Velho',
+                away: 'Salgado FC',
+                score: '2 x 1',
+                location: 'Centro Velho',
+                homeScorers: 'Thaylon (2)',
+                awayScorers: 'Gabriel'
+            },
+            {
+                date: '17/01/2026',
+                home: 'SC Centro Velho',
+                away: 'Matinha',
+                score: '1 x 2',
+                location: 'Matinha',
+                homeScorers: 'Sabão',
+                awayScorers: 'Tipinho, Josiel'
+            },
+            {
+                date: '31/12/2025',
+                home: 'EC Centro Velho',
+                away: 'Juv. Salgadense',
+                score: '0 x 2',
+                location: 'Salgado',
+                homeScorers: '-',
+                awayScorers: 'Daniel, Edson'
+            }
         ];
 
         function renderMatches() {
