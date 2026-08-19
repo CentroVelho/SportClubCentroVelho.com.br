@@ -20,11 +20,6 @@
             background-position: center;
         }
 
-        /* Fundo preto sólido para a página do elenco */
-        .time-header-bg {
-            background: #000000;
-        }
-
         .active-section { display: block; }
         .hidden-section { display: none; }
         .score-badge { white-space: nowrap; min-width: fit-content; }
@@ -42,26 +37,30 @@
         @media (max-width: 60px) {
             .team-logo { width: 45px; height: 45px; }
         }
+
+        /* Animação para a seta subir */
+        @keyframes bounce-up {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+        .animate-bounce-up { animation: bounce-up 1s infinite; }
     </style>
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9300918640593409"
-     crossorigin="anonymous"></script>
-    
 </head>
 <body class="bg-gray-100 text-gray-900">
 
     <nav class="bg-black text-white sticky top-0 z-50 border-b border-[#D4AF37]">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="text-2xl font-black italic gold-text cursor-pointer flex items-center gap-2" onclick="showSection('home')">
+            <div class="text-xl md:text-2xl font-black italic gold-text cursor-pointer flex items-center gap-2" onclick="showSection('home')">
                 <i class="fas fa-shield-alt"></i> SC CENTRO VELHO
             </div>
-            <div class="flex space-x-8 font-bold uppercase text-sm tracking-widest">
+            <div class="flex space-x-4 md:space-x-8 font-bold uppercase text-xs md:text-sm tracking-widest">
                 <a href="javascript:void(0)" onclick="showSection('home')" class="hover:text-[#D4AF37] transition text-gray-300">Resultados</a>
-                <a href="javascript:void(0)" onclick="showSection('time')" class="hover:text-[#D4AF37] transition text-gray-300">Elenco</a>
+                <a href="javascript:void(0)" onclick="showSection('artilharia')" class="hover:text-[#D4AF37] transition text-gray-300">Artilharia</a>
             </div>
         </div>
     </nav>
 
+    <!-- RESULTADOS -->
     <div id="homeSection" class="active-section">
         <header class="hero-bg text-white py-16 border-b border-[#D4AF37]">
             <div class="container mx-auto px-4 text-center">
@@ -69,128 +68,38 @@
                 <p class="text-gray-200 italic font-medium tracking-wide">Acompanhe a jornada do Sport Club Centro Velho.</p>
             </div>
         </header>
-
         <main class="container mx-auto px-4 py-10">
             <div class="max-w-4xl mx-auto space-y-6">
                 <h2 class="text-2xl font-black flex items-center gap-2 uppercase italic mb-8">
-                    <span class="w-8 h-1 gold-bg"></span>
-                    Temporada 2025/2026
+                    <span class="w-8 h-1 gold-bg"></span> Temporada 2025/2026
                 </h2>
-
                 <div id="matchList" class="grid gap-6"></div>
             </div>
         </main>
     </div>
 
-    <div id="timeSection" class="hidden-section">
-        <header class="time-header-bg py-8 border-b border-[#D4AF37]">
+    <!-- ARTILHARIA -->
+    <div id="artilhariaSection" class="hidden-section">
+        <header class="bg-black py-8 border-b border-[#D4AF37]">
             <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl font-black uppercase italic text-white mb-2">Artilharia <span class="gold-text">Oficial</span></h2>
+                <p class="text-gray-400 text-sm italic">Maiores goleadores da temporada</p>
             </div>
         </header>
-
         <main class="container mx-auto px-4 py-10">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-black uppercase italic mb-10 text-center">Elenco <span class="gold-text">Oficial</span></h2>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                    <!-- Thaylon -->
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center">
-                        <div class="w-16 h-16 bg-black rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-[#D4AF37]">
-                            <i class="fas fa-user-ninja gold-text text-2xl"></i>
-                        </div>
-                        <h3 class="font-black uppercase text-sm md:text-lg">Thaylon</h3>
-                        <p class="text-[#D4AF37] font-bold text-[10px] mb-2 uppercase">Atacante</p>
-                        <div class="bg-gray-100 rounded-full py-1 px-3 inline-block text-[10px] font-bold uppercase">11 Gols</div>
-                    </div>
-
-                    <!-- John -->
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center">
-                        <div class="w-16 h-16 bg-black rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-[#D4AF37]">
-                            <i class="fas fa-user gold-text text-2xl"></i>
-                        </div>
-                        <h3 class="font-black uppercase text-sm md:text-lg">John</h3>
-                        <p class="text-[#D4AF37] font-bold text-[10px] mb-2 uppercase">Volante</p>
-                        <div class="bg-gray-100 rounded-full py-1 px-3 inline-block text-[10px] font-bold uppercase">2 Gols</div>
-                    </div>
-
-                    <!-- Sabão -->
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center">
-                        <div class="w-16 h-16 bg-black rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-[#D4AF37]">
-                            <i class="fas fa-user gold-text text-2xl"></i>
-                        </div>
-                        <h3 class="font-black uppercase text-sm md:text-lg">Sabão</h3>
-                        <p class="text-[#D4AF37] font-bold text-[10px] mb-2 uppercase">Meia atacante</p>
-                        <div class="bg-gray-100 rounded-full py-1 px-3 inline-block text-[10px] font-bold uppercase">2 Gols</div>
-                    </div>
-
-                    <!-- Paco -->
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center">
-                        <div class="w-16 h-16 bg-black rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-[#D4AF37]">
-                            <i class="fas fa-user gold-text text-2xl"></i>
-                        </div>
-                        <h3 class="font-black uppercase text-sm md:text-lg">Paco</h3>
-                        <p class="text-[#D4AF37] font-bold text-[10px] mb-2 uppercase">Atacante</p>
-                        <div class="bg-gray-100 rounded-full py-1 px-3 inline-block text-[10px] font-bold uppercase">2 Gol</div>
-                    </div>
-
-                    <!-- Pangaré -->
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center">
-                        <div class="w-16 h-16 bg-black rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-[#D4AF37]">
-                            <i class="fas fa-user gold-text text-2xl"></i>
-                        </div>
-                        <h3 class="font-black uppercase text-sm md:text-lg">Pangaré</h3>
-                        <p class="text-[#D4AF37] font-bold text-[10px] mb-2 uppercase">Atacante</p>
-                        <div class="bg-gray-100 rounded-full py-1 px-3 inline-block text-[10px] font-bold uppercase">1 Gol</div>
-                    </div>
-
-                    <!-- Diego -->
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center">
-                        <div class="w-16 h-16 bg-black rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-[#D4AF37]">
-                            <i class="fas fa-user gold-text text-2xl"></i>
-                        </div>
-                        <h3 class="font-black uppercase text-sm md:text-lg">Diego</h3>
-                        <p class="text-[#D4AF37] font-bold text-[10px] mb-2 uppercase">Meia atacante</p>
-                        <div class="bg-gray-100 rounded-full py-1 px-3 inline-block text-[10px] font-bold uppercase">1 Gol</div>
-                    </div>
-
-                    <!-- Vando -->
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center">
-                        <div class="w-16 h-16 bg-black rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-[#D4AF37]">
-                            <i class="fas fa-user gold-text text-2xl"></i>
-                        </div>
-                        <h3 class="font-black uppercase text-sm md:text-lg">Vando</h3>
-                        <p class="text-[#D4AF37] font-bold text-[10px] mb-2 uppercase">Zagueiro</p>
-                        <div class="bg-gray-100 rounded-full py-1 px-3 inline-block text-[10px] font-bold uppercase">1 Gol</div>
-                    </div>
-
-                    <!-- Douglas -->
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center">
-                        <div class="w-16 h-16 bg-black rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-[#D4AF37]">
-                            <i class="fas fa-user gold-text text-2xl"></i>
-                        </div>
-                        <h3 class="font-black uppercase text-sm md:text-lg">Douglas</h3>
-                        <p class="text-[#D4AF37] font-bold text-[10px] mb-2 uppercase">Lateral direito</p>
-                        <div class="bg-gray-100 rounded-full py-1 px-3 inline-block text-[10px] font-bold uppercase">1 Gol</div>
-                    </div>
-
-                    <!-- Yuri -->
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center">
-                        <div class="w-16 h-16 bg-black rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-[#D4AF37]">
-                            <i class="fas fa-user gold-text text-2xl"></i>
-                        </div>
-                        <h3 class="font-black uppercase text-sm md:text-lg">Yuri</h3>
-                        <p class="text-[#D4AF37] font-bold text-[10px] mb-2 uppercase">Lateral direito</p>
-                        <div class="bg-gray-100 rounded-full py-1 px-3 inline-block text-[10px] font-bold uppercase">1 Gol</div>
-                    </div>
-                    
-                    <!-- Tom -->
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center">
-                        <div class="w-16 h-16 bg-black rounded-full mx-auto mb-3 flex items-center justify-center border-2 border-[#D4AF37]">
-                            <i class="fas fa-user gold-text text-2xl"></i>
-                        </div>
-                        <h3 class="font-black uppercase text-sm md:text-lg">Tom</h3>
-                        <p class="text-[#D4AF37] font-bold text-[10px] mb-2 uppercase">Centroavante</p>
-                        <div class="bg-gray-100 rounded-full py-1 px-3 inline-block text-[10px] font-bold uppercase">1 Gol</div>
-                    </div>
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white rounded-xl shadow-lg border border-[#D4AF37] overflow-hidden">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-black text-[#D4AF37] uppercase text-xs md:text-sm tracking-wider">
+                                <th class="p-4 text-center w-16 font-black">Pos</th>
+                                <th class="p-4 text-center w-16">Status</th>
+                                <th class="p-4 font-black">Jogador</th>
+                                <th class="p-4 text-center font-black">Gols</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-artilharia"></tbody>
+                    </table>
                 </div>
             </div>
         </main>
@@ -201,14 +110,54 @@
             <div class="text-3xl font-black italic gold-text mb-4 uppercase">SC CENTRO VELHO</div>
             <p class="text-gray-500 text-sm mb-6 tracking-widest uppercase">Honra • Tradição • Paixão</p>
             <div class="flex justify-center space-x-6 text-2xl text-gray-400 mb-8">
-                <a href="https://www.instagram.com/sportclubcentrovelho?igsh=MXA1NWowNjFtbGpycQ==" target="_blank" class="hover:text-[#D4AF37] transition"><i class="fab fa-instagram"></i></a>
-                <a href="https://whatsapp.com/channel/0029VbC37ZlK0IBjlbVmdj1G" target="_blank" class="hover:text-[#D4AF37] transition"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/sportclubcentrovelho" target="_blank" class="hover:text-[#D4AF37] transition"><i class="fab fa-instagram"></i></a>
+                <a href="https://whatsapp.com" target="_blank" class="hover:text-[#D4AF37] transition"><i class="fab fa-whatsapp"></i></a>
             </div>
             <p class="text-gray-600 text-[10px] uppercase tracking-[0.2em]">© 2026 Sport Club Centro Velho</p>
         </div>
     </footer>
 
     <script>
+        // --- DADOS DOS JOGADORES (Edite os gols e o status aqui) ---
+        // status pode ser: 'up' (subiu), 'down' (desceu), ou 'none' (manteve)
+        let jogadores = [
+            { nome: 'Thaylon', gols: 11, status: 'none' },
+            { nome: 'John', gols: 2, status: 'none' },
+            { nome: 'Sabão', gols: 2, status: 'none' },
+            { nome: 'Paco', gols: 2, status: 'none' },
+            { nome: 'Pangaré', gols: 1, status: 'none' },
+            { nome: 'Diego', gols: 1, status: 'none' },
+            { nome: 'Vando', gols: 1, status: 'none' },
+            { nome: 'Douglas', gols: 1, status: 'none' },
+            { nome: 'Yuri', gols: 1, status: 'none' },
+            { nome: 'Tom', gols: 1, status: 'none' }
+        ];
+
+        // Ordena automaticamente pelo maior número de gols
+        jogadores.sort((a, b) => b.gols - a.gols);
+
+        // ÍCONES DE SETAS
+        const iconUp = `<svg viewBox="0 0 24 24" class="w-6 h-6 text-green-500 fill-current animate-bounce-up mx-auto"><path d="M12 2L2 20h20L12 2z"/></svg>`;
+        const iconDown = `<svg viewBox="0 0 24 24" class="w-6 h-6 text-red-500 stroke-current mx-auto" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l7 7 7-7"/></svg>`;
+        const iconNone = `<svg viewBox="0 0 24 24" class="w-5 h-5 text-gray-400 stroke-current mx-auto" fill="none" stroke-width="4" stroke-linecap="round"><path d="M5 12h14"/></svg>`;
+
+        function renderizarArtilharia() {
+            const tbody = document.getElementById('tabela-artilharia');
+            tbody.innerHTML = '';
+            jogadores.forEach((j, index) => {
+                let setaSVG = j.status === 'up' ? iconUp : j.status === 'down' ? iconDown : iconNone;
+                tbody.innerHTML += `
+                    <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                        <td class="p-4 text-center font-black text-gray-500">${index + 1}º</td>
+                        <td class="p-4 text-center">${setaSVG}</td>
+                        <td class="p-4 font-bold text-gray-800 uppercase text-sm md:text-base">${j.nome}</td>
+                        <td class="p-4 text-center font-black text-xl gold-text">${j.gols}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        // --- DADOS DE PARTIDAS ---
         const teamLogos = {
             'SC Centro Velho': 'Sport Club Centro Velho.png',
             'LiverPool': 'LiverPool.png',
@@ -223,141 +172,21 @@
         };
 
         const matches = [
-            {
-                date: '01/08/2026',
-                home: 'SC Centro Velho',
-                away: 'Potencial E.C.',
-                score: '2 x 1',
-                location: 'Salgado',
-                homeScorers: 'Paco, Pangaré',
-                awayScorers: 'Zé Rocho'
-            },
-            {
-                date: '23/07/2026',
-                home: 'SC Centro Velho',
-                away: 'Salgado FC',
-                score: '2 x 1',
-                location: 'Centro Velho',
-                homeScorers: 'Thaylon (2)',
-                awayScorers: 'Edson'
-            },
-            {
-                date: '22/06/2026',
-                home: 'SC Centro Velho',
-                away: 'União Salgadense',
-                score: '3 x 1',
-                location: 'Salgado',
-                homeScorers: 'Thaylon (2), Paco',
-                awayScorers: 'Pantocha'
-            },
-            {
-                date: '08/05/2026',
-                home: 'SC Centro Velho',
-                away: 'LiverPool',
-                score: '1 x 0',
-                location: 'Anajatuba',
-                homeScorers: 'Thaylon',
-                awayScorers: '-'
-            },
-            {
-                date: '29/04/2026',
-                home: 'SC Centro Velho',
-                away: 'LiverPool',
-                score: '1 x 2',
-                location: 'Centro Velho',
-                homeScorers: 'Sabão',
-                awayScorers: 'Danielzin, Vitor'
-            },
-            {
-                date: '16/04/2026',
-                home: 'SC Centro Velho',
-                away: 'ACM',
-                score: '2 x 0',
-                location: 'Salgado',
-                homeScorers: 'Thaylon (2)',
-                awayScorers: '-'
-            },
-            {
-                date: '25/03/2026',
-                home: 'SC Centro Velho',
-                away: 'Resenha FC',
-                score: '0 x 1',
-                location: 'Centro Velho',
-                homeScorers: '-',
-                awayScorers: 'Cabelo liso'
-            },
-            {
-                date: '19/03/2026',
-                home: 'SC Centro Velho',
-                away: 'Salgado FC',
-                score: '1 x 3',
-                location: 'Centro Velho',
-                homeScorers: 'Tom',
-                awayScorers: 'Edson (2), Pangaré'
-            },
-            {
-                date: '15/03/2026',
-                home: 'SC Centro Velho',
-                away: 'LiverPool',
-                score: '1 x 0',
-                location: 'Centro Velho',
-                homeScorers: 'John',
-                awayScorers: '-'
-            },
-            {
-                date: '01/03/2026',
-                home: 'SC Centro Velho',
-                away: 'AJAX',
-                score: '3 x 1',
-                location: 'Centro Velho',
-                homeScorers: 'Douglas, Diego, Vando',
-                awayScorers: 'Marajar'
-            },
-            {
-                date: '21/02/2026',
-                home: 'SC Centro Velho',
-                away: 'LiverPool',
-                score: '2 x 1',
-                location: 'Anajatuba',
-                homeScorers: 'Jhon, Yuri',
-                awayScorers: 'Marajar'
-            },
-            {
-                date: '14/02/2026',
-                home: 'SC Centro Velho',
-                away: 'Matinha F.C',
-                score: '2 x 1',
-                location: 'Centro Velho',
-                homeScorers: 'Thaylon (2)',
-                awayScorers: 'Iniesta'
-            },
-            {
-                date: '21/01/2026',
-                home: 'SC Centro Velho',
-                away: 'Salgado FC',
-                score: '2 x 1',
-                location: 'Centro Velho',
-                homeScorers: 'Thaylon (2)',
-                awayScorers: 'Gabriel'
-            },
-            {
-                date: '17/01/2026',
-                home: 'SC Centro Velho',
-                away: 'Matinha F.C',
-                score: '1 x 2',
-                location: 'Matinha',
-                homeScorers: 'Sabão',
-                awayScorers: 'Tipinho, Josiel'
-            },
-            {
-                date: '31/12/2025',
-                home: 'SC Centro Velho',
-                away: 'Juv. Salgadense',
-                score: '0 x 2',
-                location: 'Salgado',
-                homeScorers: '-',
-                awayScorers: 'Daniel, Edson'
-            }
+            { date: '01/08/2026', home: 'SC Centro Velho', away: 'Potencial E.C.', score: '2 x 1', location: 'Salgado', homeScorers: 'Paco, Pangaré', awayScorers: 'Zé Rocho' },
+            { date: '23/07/2026', home: 'SC Centro Velho', away: 'Salgado FC', score: '2 x 1', location: 'Centro Velho', homeScorers: 'Thaylon (2)', awayScorers: 'Edson' },
+            { date: '22/06/2026', home: 'SC Centro Velho', away: 'União Salgadense', score: '3 x 1', location: 'Salgado', homeScorers: 'Thaylon (2), Paco', awayScorers: 'Pantocha' },
+            { date: '08/05/2026', home: 'SC Centro Velho', away: 'LiverPool', score: '1 x 0', location: 'Anajatuba', homeScorers: 'Thaylon', awayScorers: '-' },
+            { date: '29/04/2026', home: 'SC Centro Velho', away: 'LiverPool', score: '1 x 2', location: 'Centro Velho', homeScorers: 'Sabão', awayScorers: 'Danielzin, Vitor' },
+            { date: '16/04/2026', home: 'SC Centro Velho', away: 'ACM', score: '2 x 0', location: 'Salgado', homeScorers: 'Thaylon (2)', awayScorers: '-' },
+            { date: '25/03/2026', home: 'SC Centro Velho', away: 'Resenha FC', score: '0 x 1', location: 'Centro Velho', homeScorers: '-', awayScorers: 'Cabelo liso' },
+            { date: '19/03/2026', home: 'SC Centro Velho', away: 'Salgado FC', score: '1 x 3', location: 'Centro Velho', homeScorers: 'Tom', awayScorers: 'Edson (2), Pangaré' },
+            { date: '15/03/2026', home: 'SC Centro Velho', away: 'LiverPool', score: '1 x 0', location: 'Centro Velho', homeScorers: 'John', awayScorers: '-' },
+            { date: '01/03/2026', home: 'SC Centro Velho', away: 'AJAX', score: '3 x 1', location: 'Centro Velho', homeScorers: 'Douglas, Diego, Vando', awayScorers: 'Marajar' },
+            { date: '21/02/2026', home: 'SC Centro Velho', away: 'LiverPool', score: '2 x 1', location: 'Anajatuba', homeScorers: 'Jhon, Yuri', awayScorers: 'Marajar' },
+            { date: '14/02/2026', home: 'SC Centro Velho', away: 'Matinha F.C', score: '2 x 1', location: 'Centro Velho', homeScorers: 'Thaylon (2)', awayScorers: 'Iniesta' },
+            { date: '21/01/2026', home: 'SC Centro Velho', away: 'Salgado FC', score: '2 x 1', location: 'Centro Velho', homeScorers: 'Thaylon (2)', awayScorers: 'Gabriel' },
+            { date: '17/01/2026', home: 'SC Centro Velho', away: 'Matinha F.C', score: '1 x 2', location: 'Matinha', homeScorers: 'Sabão', awayScorers: 'Tipinho, Josiel' },
+            { date: '31/12/2025', home: 'SC Centro Velho', away: 'Juv. Salgadense', score: '0 x 2', location: 'Salgado', homeScorers: '-', awayScorers: 'Daniel, Edson' }
         ];
 
         function renderMatches() {
@@ -375,9 +204,7 @@
                             <div class="text-[9px] md:text-[10px] text-gray-500 font-bold italic">${m.homeScorers}</div>
                         </div>
                         <div class="w-[25%] flex flex-col items-center px-1">
-                            <div class="score-badge bg-black text-white px-3 md:px-6 py-2 rounded-lg font-black text-lg md:text-2xl shadow-lg border border-[#D4AF37]">
-                                ${m.score}
-                            </div>
+                            <div class="score-badge bg-black text-white px-3 md:px-6 py-2 rounded-lg font-black text-lg md:text-2xl shadow-lg border border-[#D4AF37]">${m.score}</div>
                         </div>
                         <div class="w-[35%] text-center">
                             <img src="${teamLogos[m.away] || ''}" onerror="this.src='https://placehold.co/60x60/000/D4AF37?text=LOGO'" alt="Escudo ${m.away}" class="team-logo">
@@ -391,11 +218,16 @@
 
         function showSection(id) {
             document.getElementById('homeSection').className = (id === 'home') ? 'active-section' : 'hidden-section';
-            document.getElementById('timeSection').className = (id === 'time') ? 'active-section' : 'hidden-section';
+            document.getElementById('artilhariaSection').className = (id === 'artilharia') ? 'active-section' : 'hidden-section';
             window.scrollTo(0,0);
         }
 
-        window.onload = renderMatches;
+        window.onload = () => {
+            renderMatches();
+            renderizarArtilharia();
+        };
     </script>
 </body>
 </html>
+
+
