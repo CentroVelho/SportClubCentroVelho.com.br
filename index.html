@@ -127,14 +127,20 @@
             { nome: 'Paco', gols: 2, status: 'none' },
             { nome: 'Pangaré', gols: 1, status: 'none' },
             { nome: 'Diego', gols: 1, status: 'none' },
-            { nome: 'Vando', gols: 1, status: 'none' },
+            { nome: 'Vando', gols: 1, status: 'none' }, // Se alterar para 2, ele passará o John
             { nome: 'Douglas', gols: 1, status: 'none' },
             { nome: 'Yuri', gols: 1, status: 'none' },
             { nome: 'Tom', gols: 1, status: 'none' }
         ];
 
-        // Ordena automaticamente pelo maior número de gols
-        jogadores.sort((a, b) => b.gols - a.gols);
+        // Guarda a ordem original para critério de desempate
+        jogadores.forEach((j, index) => j.ordemOriginal = index);
+
+        // Ordena por gols. Em caso de empate, quem estava mais abaixo (maior ordemOriginal) fica na frente
+        jogadores.sort((a, b) => {
+            if (b.gols !== a.gols) return b.gols - a.gols;
+            return b.ordemOriginal - a.ordemOriginal; 
+        });
 
         // ÍCONES DE SETAS
         const iconUp = `<svg viewBox="0 0 24 24" class="w-6 h-6 text-green-500 fill-current animate-bounce-up mx-auto"><path d="M12 2L2 20h20L12 2z"/></svg>`;
