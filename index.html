@@ -15,9 +15,10 @@
         .gold-bg { background-color: #D4AF37; }
 
         .hero-bg {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Time.jpg');
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Flay.png');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
         }
 
         .active-section { display: block; }
@@ -34,16 +35,31 @@
             box-shadow: none !important;
             display: block;
         }
-        @media (max-width: 60px) {
-            .team-logo { width: 45px; height: 45px; }
+        
+        .highlight-logo {
+            width: 100px;
+            height: 100px;
         }
 
-        /* Animação para a seta subir */
+        @media (max-width: 768px) {
+            .team-logo { width: 45px; height: 45px; }
+            .highlight-logo { width: 70px; height: 70px; }
+        }
+
         @keyframes bounce-up {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-3px); }
         }
         .animate-bounce-up { animation: bounce-up 1s infinite; }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.8); }
+        }
+        .highlight-card {
+            animation: pulse-glow 2s infinite;
+            border: 2px solid #D4AF37;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900">
@@ -60,18 +76,64 @@
         </div>
     </nav>
 
-    <!-- RESULTADOS -->
+    <!-- RESULTADOS & PRÓXIMO JOGO -->
     <div id="homeSection" class="active-section">
-        <header class="hero-bg text-white py-16 border-b border-[#D4AF37]">
+        <header class="hero-bg text-white pt-10 pb-16 border-b-4 border-[#D4AF37]">
             <div class="container mx-auto px-4 text-center">
-                <h1 class="text-4xl md:text-6xl font-black mb-2 uppercase italic gold-text">Resultados dos Jogos</h1>
-                <p class="text-gray-200 italic font-medium tracking-wide">Acompanhe a jornada do Sport Club Centro Velho.</p>
+                
+                <!-- Próximo Jogo Destaque -->
+                <div class="max-w-3xl mx-auto mb-10">
+                    <div class="inline-block bg-[#D4AF37] text-black font-black uppercase tracking-widest text-xs md:text-sm px-6 py-2 rounded-t-lg shadow-lg">
+                        <i class="fas fa-fire mr-2"></i> Super Amistoso Intermunicipal
+                    </div>
+                    <div class="bg-black/90 backdrop-blur-sm p-6 md:p-8 rounded-b-xl rounded-t-none highlight-card shadow-2xl relative overflow-hidden">
+                        
+                        <!-- Decorative background elements -->
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent"></div>
+                        <div class="absolute -top-24 -right-24 w-48 h-48 bg-[#D4AF37] rounded-full mix-blend-overlay filter blur-3xl opacity-20"></div>
+                        
+                        <h2 class="text-2xl md:text-3xl font-black mb-6 uppercase italic text-white drop-shadow-lg">
+                            Próximo Jogo
+                        </h2>
+                        
+                        <div class="flex items-center justify-between">
+                            <!-- Mandante (Home) -->
+                            <div class="w-[35%] flex flex-col items-center">
+                                <img src="Sport Club Centro Velho.jpg" alt="Escudo SC Centro Velho" class="team-logo highlight-logo drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+                                <div class="font-black text-lg md:text-2xl uppercase mt-3 gold-text text-center leading-tight">SC Centro Velho</div>
+                            </div>
+                            
+                            <!-- VS -->
+                            <div class="w-[30%] flex flex-col items-center justify-center px-2">
+                                <div class="text-4xl md:text-5xl font-black italic text-gray-300 drop-shadow-md mb-2">VS</div>
+                                <div class="flex flex-col gap-1 items-center bg-white/10 px-4 py-2 rounded-lg border border-white/20">
+                                    <div class="text-[10px] md:text-xs font-bold uppercase text-gray-300 tracking-wider whitespace-nowrap"><i class="far fa-calendar-alt mr-1"></i> Sábado, 19.09</div>
+                                    <div class="text-[10px] md:text-xs font-bold uppercase gold-text tracking-wider whitespace-nowrap"><i class="far fa-clock mr-1"></i> 15h00</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Visitante (Away) -->
+                            <div class="w-[35%] flex flex-col items-center">
+                                <img src="Resenha.png" alt="Escudo Resenha FC" class="team-logo highlight-logo drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+                                <div class="font-black text-lg md:text-2xl uppercase mt-3 text-white text-center leading-tight">Resenha FC</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 pt-4 border-t border-white/10 flex justify-center items-center text-xs md:text-sm text-gray-400 font-bold uppercase tracking-widest">
+                            <i class="fas fa-map-marker-alt mr-2 gold-text text-lg"></i> Campo do Sport - Centro Velho
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="text-3xl md:text-5xl font-black mb-2 uppercase italic text-gray-300 mt-12">Histórico da Temporada</h1>
+                <p class="text-gray-400 italic font-medium tracking-wide">Acompanhe a jornada do Sport Club Centro Velho.</p>
             </div>
         </header>
+        
         <main class="container mx-auto px-4 py-10">
             <div class="max-w-4xl mx-auto space-y-6">
                 <h2 class="text-2xl font-black flex items-center gap-2 uppercase italic mb-8">
-                    <span class="w-8 h-1 gold-bg"></span> Temporada 2025/2026
+                    <span class="w-8 h-1 gold-bg"></span> Resultados Anteriores
                 </h2>
                 <div id="matchList" class="grid gap-6"></div>
             </div>
@@ -165,13 +227,13 @@
 
         // --- DADOS DE PARTIDAS ---
         const teamLogos = {
-            'SC Centro Velho': 'Sport Club Centro Velho.png',
+            'SC Centro Velho': 'Sport Club Centro Velho.jpg', // Atualizado para usar a imagem fornecida
             'LiverPool': 'LiverPool.png',
             'Matinha F.C': 'Matinha F.C.png',
             'Salgado FC': 'Salgado FC.png',
             'Juv. Salgadense': 'Juventude Salgadense.png',
             'AJAX': 'AJAX.png',
-            'Resenha FC': 'Resenha FC.png',
+            'Resenha FC': 'Resenha.png', // Atualizado para usar a imagem fornecida
             'ACM': 'ACM.png',
             'União Salgadense': 'União Salgadense.png',
             'Potencial E.C.': 'Potencial E.C.png'
@@ -235,5 +297,3 @@
     </script>
 </body>
 </html>
-
-
