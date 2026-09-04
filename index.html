@@ -103,12 +103,10 @@
                                 <div class="font-black text-xs sm:text-sm md:text-2xl uppercase mt-2 md:mt-3 gold-text text-center leading-tight">SC Centro Velho</div>
                             </div>
                             
-                            <!-- VS -->
+                            <!-- VS (Cancelado) -->
                             <div class="w-[30%] flex flex-col items-center justify-center px-0 sm:px-2">
-                                <div class="text-3xl md:text-5xl font-black italic text-gray-300 drop-shadow-md mb-1 md:mb-2">VS</div>
-                                <div class="flex flex-col gap-1 items-center bg-white/10 px-2 md:px-4 py-2 rounded-lg border border-white/20">
-                                    <div class="text-[9px] md:text-xs font-bold uppercase text-gray-300 tracking-wider whitespace-nowrap"><i class="far fa-calendar-alt mr-1"></i> Sábado, 19.09</div>
-                                    <div class="text-[9px] md:text-xs font-bold uppercase gold-text tracking-wider whitespace-nowrap"><i class="far fa-clock mr-1"></i> 15h00</div>
+                                <div class="flex flex-col gap-1 items-center bg-red-500/20 px-3 md:px-6 py-3 rounded-lg border border-red-500/50 shadow-lg">
+                                    <div class="text-xs md:text-base font-black uppercase text-red-500 tracking-widest whitespace-nowrap"><i class="fas fa-ban mr-1"></i> Cancelado</div>
                                 </div>
                             </div>
                             
@@ -180,8 +178,7 @@
     </footer>
 
     <script>
-        // --- DADOS DOS JOGADORES (Edite os gols e o status aqui) ---
-        // status pode ser: 'up' (subiu), 'down' (desceu), ou 'none' (manteve)
+        // --- DADOS DOS JOGADORES ---
         let jogadores = [
             { nome: 'Thaylon', gols: 11, status: 'none' },
             { nome: 'John', gols: 2, status: 'none' },
@@ -189,16 +186,14 @@
             { nome: 'Paco', gols: 2, status: 'none' },
             { nome: 'Pangaré', gols: 1, status: 'none' },
             { nome: 'Diego', gols: 1, status: 'none' },
-            { nome: 'Vando', gols: 1, status: 'none' }, // Se alterar para 2, ele passará o John
+            { nome: 'Vando', gols: 1, status: 'none' },
             { nome: 'Douglas', gols: 1, status: 'none' },
             { nome: 'Yuri', gols: 1, status: 'none' },
             { nome: 'Tom', gols: 1, status: 'none' }
         ];
 
-        // Guarda a ordem original para critério de desempate
         jogadores.forEach((j, index) => j.ordemOriginal = index);
 
-        // Ordena por gols. Em caso de empate, quem estava mais abaixo (maior ordemOriginal) fica na frente
         jogadores.sort((a, b) => {
             if (b.gols !== a.gols) return b.gols - a.gols;
             return b.ordemOriginal - a.ordemOriginal; 
@@ -227,13 +222,13 @@
 
         // --- DADOS DE PARTIDAS ---
         const teamLogos = {
-            'SC Centro Velho': 'Sport Club Centro Velho.png', // Atualizado para usar a imagem fornecida
+            'SC Centro Velho': 'Sport Club Centro Velho.png',
             'LiverPool': 'LiverPool.png',
             'Matinha F.C': 'Matinha F.C.png',
             'Salgado FC': 'Salgado FC.png',
             'Juv. Salgadense': 'Juventude Salgadense.png',
             'AJAX': 'AJAX.png',
-            'Resenha FC': 'Resenha FC.png',
+            'Resenha FC': 'Resenha.png',
             'Resenha': 'Resenha.png',
             'ACM': 'ACM.png',
             'União Salgadense': 'União Salgadense.png',
