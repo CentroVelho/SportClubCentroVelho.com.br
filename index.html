@@ -36,6 +36,16 @@
             display: block;
         }
         
+        .table-team-logo {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        
         .highlight-logo {
             width: 100px;
             height: 100px;
@@ -44,6 +54,7 @@
         @media (max-width: 768px) {
             .team-logo { width: 45px; height: 45px; }
             .highlight-logo { width: 70px; height: 70px; }
+            .table-team-logo { width: 22px; height: 22px; margin-right: 6px; }
         }
 
         @keyframes bounce-up {
@@ -60,6 +71,14 @@
             animation: pulse-glow 2s infinite;
             border: 2px solid #D4AF37;
         }
+
+        @keyframes pulse-hint {
+            0%, 100% { opacity: 1; transform: translateX(0); }
+            50% { opacity: 0.6; transform: translateX(4px); }
+        }
+        .animate-scroll-hint {
+            animation: pulse-hint 1.5s infinite ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900">
@@ -69,9 +88,10 @@
             <div class="text-xl md:text-2xl font-black italic gold-text cursor-pointer flex items-center gap-2" onclick="showSection('home')">
                 <i class="fas fa-shield-alt"></i> SC CENTRO VELHO
             </div>
-            <div class="flex space-x-4 md:space-x-8 font-bold uppercase text-xs md:text-sm tracking-widest">
+            <div class="flex space-x-3 md:space-x-8 font-bold uppercase text-xs md:text-sm tracking-widest">
                 <a href="javascript:void(0)" onclick="showSection('home')" class="hover:text-[#D4AF37] transition text-gray-300">Resultados</a>
                 <a href="javascript:void(0)" onclick="showSection('artilharia')" class="hover:text-[#D4AF37] transition text-gray-300">Artilharia</a>
+                <a href="javascript:void(0)" onclick="showSection('tabela')" class="hover:text-[#D4AF37] transition text-gray-300">Tabela</a>
             </div>
         </div>
     </nav>
@@ -165,6 +185,64 @@
         </main>
     </div>
 
+    <!-- TABELA -->
+    <div id="tabelaSection" class="hidden-section">
+        <header class="bg-black py-8 border-b border-[#D4AF37]">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl font-black uppercase italic text-white mb-2">Tabela <span class="gold-text">Geral</span></h2>
+                <p class="text-gray-400 text-sm italic">Estatísticas calculadas com base em todas as partidas registradas</p>
+            </div>
+        </header>
+        <main class="container mx-auto px-4 py-10">
+            <div class="max-w-4xl mx-auto">
+                <!-- AVISO GRANDE E EM VERMELHO -->
+                <div class="bg-red-600 text-white border-l-8 border-black p-5 md:p-6 mb-6 rounded-r-xl shadow-2xl">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 text-yellow-300 text-3xl md:text-4xl mr-3 md:mr-4 mt-1 animate-bounce">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base md:text-xl font-black uppercase tracking-wider mb-2 text-yellow-200">Atenção! Leia antes de reclamar:</h3>
+                            <p class="text-xs md:text-base font-bold leading-relaxed text-white">
+                                Esta tabela foi feita estritamente com os históricos de partidas registrados no site! Então por favor, <span class="underline decoration-yellow-300 decoration-2">NÃO SE OFENDA</span> com as derrotas, gols sofridos ou posições ruins! É apenas o retrato frio e matemático dos números em campo. Boa sorte a todos os times na recuperação!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Indicador interativo de deslizar para o lado -->
+                <div class="bg-black text-[#D4AF37] px-4 py-3 rounded-t-xl text-xs md:text-sm font-black uppercase tracking-wider flex flex-wrap items-center justify-between gap-2 border-b border-[#D4AF37]">
+                    <span class="flex items-center gap-2">
+                        <i class="fas fa-table"></i> Tabela Completa
+                    </span>
+                    <span class="flex items-center gap-1 text-white animate-scroll-hint bg-[#D4AF37]/20 px-3 py-1.5 rounded-lg border border-[#D4AF37] text-[11px] md:text-xs">
+                        <span>👉 Arraste para o lado para ver V, E, D, SG</span> <i class="fas fa-arrows-alt-h text-[#D4AF37]"></i>
+                    </span>
+                </div>
+
+                <div class="bg-white rounded-b-xl shadow-lg border border-[#D4AF37] border-t-0 overflow-x-auto relative">
+                    <table class="w-full text-left border-collapse min-w-[650px]">
+                        <thead>
+                            <tr class="bg-black text-[#D4AF37] uppercase text-xs md:text-sm tracking-wider">
+                                <th class="p-3 text-center w-12 font-black">Pos</th>
+                                <th class="p-3">Time</th>
+                                <th class="p-3 text-center font-black">Pts</th>
+                                <th class="p-3 text-center">J</th>
+                                <th class="p-3 text-center">V</th>
+                                <th class="p-3 text-center">E</th>
+                                <th class="p-3 text-center">D</th>
+                                <th class="p-3 text-center">GP</th>
+                                <th class="p-3 text-center">GC</th>
+                                <th class="p-3 text-center">SG</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-geral"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
     <footer class="bg-black text-white py-10 border-t-2 border-[#D4AF37]">
         <div class="container mx-auto px-4 text-center">
             <div class="text-3xl font-black italic gold-text mb-4 uppercase">SC CENTRO VELHO</div>
@@ -178,6 +256,21 @@
     </footer>
 
     <script>
+        // Mapeamento de escudos
+        const teamLogos = {
+            'SC Centro Velho': 'Sport Club Centro Velho.png',
+            'LiverPool': 'LiverPool.png',
+            'Matinha F.C': 'Matinha F.C.png',
+            'Salgado FC': 'Salgado FC.png',
+            'Juv. Salgadense': 'Juventude Salgadense.png',
+            'AJAX': 'AJAX.png',
+            'Resenha FC': 'Resenha FC.png',
+            'Resenha': 'Resenha.png',
+            'ACM': 'ACM.png',
+            'União Salgadense': 'União Salgadense.png',
+            'Potencial E.C.': 'Potencial E.C.png'
+        };
+
         // --- DADOS DOS JOGADORES ---
         let jogadores = [
             { nome: 'Thaylon', gols: 12, status: 'up' },
@@ -206,6 +299,7 @@
 
         function renderizarArtilharia() {
             const tbody = document.getElementById('tabela-artilharia');
+            if (!tbody) return;
             tbody.innerHTML = '';
             jogadores.forEach((j, index) => {
                 let setaSVG = j.status === 'up' ? iconUp : j.status === 'down' ? iconDown : iconNone;
@@ -221,20 +315,6 @@
         }
 
         // --- DADOS DE PARTIDAS ---
-        const teamLogos = {
-            'SC Centro Velho': 'Sport Club Centro Velho.png',
-            'LiverPool': 'LiverPool.png',
-            'Matinha F.C': 'Matinha F.C.png',
-            'Salgado FC': 'Salgado FC.png',
-            'Juv. Salgadense': 'Juventude Salgadense.png',
-            'AJAX': 'AJAX.png',
-            'Resenha FC': 'Resenha FC.png',
-            'Resenha': 'Resenha.png',
-            'ACM': 'ACM.png',
-            'União Salgadense': 'União Salgadense.png',
-            'Potencial E.C.': 'Potencial E.C.png'
-        };
-
         const matches = [
             { date: '04/09/2026', home: 'SC Centro Velho', away: 'LiverPool', score: '1 x 5', location: 'Centro Velho', homeScorers: 'Thaylon', awayScorers: 'Guilherne (2), Vitor, Maurício,  Werden' },
             { date: '01/08/2026', home: 'SC Centro Velho', away: 'Potencial E.C.', score: '2 x 1', location: 'Salgado', homeScorers: 'Paco, Pangaré', awayScorers: 'Zé Rocho' },
@@ -256,6 +336,7 @@
 
         function renderMatches() {
             const list = document.getElementById('matchList');
+            if (!list) return;
             list.innerHTML = matches.map(m => `
                 <div class="match-card bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-gray-100">
                     <div class="flex justify-between items-center mb-4 text-[10px] md:text-[11px] font-black uppercase text-gray-400 tracking-widest border-b pb-2">
@@ -281,14 +362,100 @@
             `).join('');
         }
 
+        function calcularTabela() {
+            const stats = {};
+
+            function getTeam(name) {
+                if (!stats[name]) {
+                    stats[name] = { nome: name, p: 0, j: 0, v: 0, e: 0, d: 0, gp: 0, gc: 0, sg: 0 };
+                }
+                return stats[name];
+            }
+
+            matches.forEach(m => {
+                const parts = m.score.split('x');
+                const gh = parseInt(parts[0].trim());
+                const ga = parseInt(parts[1].trim());
+
+                const homeTeam = getTeam(m.home);
+                const awayTeam = getTeam(m.away);
+
+                homeTeam.j += 1;
+                awayTeam.j += 1;
+
+                homeTeam.gp += gh;
+                homeTeam.gc += ga;
+
+                awayTeam.gp += ga;
+                awayTeam.gc += gh;
+
+                if (gh > ga) {
+                    homeTeam.v += 1;
+                    homeTeam.p += 3;
+                    awayTeam.d += 1;
+                } else if (gh < ga) {
+                    awayTeam.v += 1;
+                    awayTeam.p += 3;
+                    homeTeam.d += 1;
+                } else {
+                    homeTeam.e += 1;
+                    homeTeam.p += 1;
+                    awayTeam.e += 1;
+                    awayTeam.p += 1;
+                }
+            });
+
+            const tabelaArray = Object.values(stats).map(t => {
+                t.sg = t.gp - t.gc;
+                return t;
+            });
+
+            tabelaArray.sort((a, b) => {
+                if (b.p !== a.p) return b.p - a.p;
+                if (b.v !== a.v) return b.v - a.v;
+                if (b.sg !== a.sg) return b.sg - a.sg;
+                return b.gp - a.gp;
+            });
+
+            const tbody = document.getElementById('tabela-geral');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+            tabelaArray.forEach((t, index) => {
+                const logoSrc = teamLogos[t.nome] || '';
+                tbody.innerHTML += `
+                    <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                        <td class="p-3 text-center font-black text-gray-500">${index + 1}º</td>
+                        <td class="p-3 font-bold text-gray-800 uppercase text-xs md:text-sm flex items-center">
+                            <img src="${logoSrc}" onerror="this.src='https://placehold.co/30x30/000/D4AF37?text=LOGO'" class="table-team-logo" alt="${t.nome}">
+                            <span class="${t.nome.includes('Centro Velho') ? 'gold-text' : ''}">${t.nome}</span>
+                        </td>
+                        <td class="p-3 text-center font-black text-base gold-text">${t.p}</td>
+                        <td class="p-3 text-center text-gray-600">${t.j}</td>
+                        <td class="p-3 text-center text-green-600 font-bold">${t.v}</td>
+                        <td class="p-3 text-center text-gray-500">${t.e}</td>
+                        <td class="p-3 text-center text-red-600 font-bold">${t.d}</td>
+                        <td class="p-3 text-center text-gray-600">${t.gp}</td>
+                        <td class="p-3 text-center text-gray-600">${t.gc}</td>
+                        <td class="p-3 text-center font-bold ${t.sg > 0 ? 'text-green-600' : t.sg < 0 ? 'text-red-600' : 'text-gray-500'}">${t.sg > 0 ? '+' + t.sg : t.sg}</td>
+                    </tr>
+                `;
+            });
+        }
+
         function showSection(id) {
-            document.getElementById('homeSection').className = (id === 'home') ? 'active-section' : 'hidden-section';
-            document.getElementById('artilhariaSection').className = (id === 'artilharia') ? 'active-section' : 'hidden-section';
+            const homeSec = document.getElementById('homeSection');
+            const tabelaSec = document.getElementById('tabelaSection');
+            const artilhariaSec = document.getElementById('artilhariaSection');
+
+            if (homeSec) homeSec.className = (id === 'home') ? 'active-section' : 'hidden-section';
+            if (artilhariaSec) artilhariaSec.className = (id === 'artilharia') ? 'active-section' : 'hidden-section';
+            if (tabelaSec) tabelaSec.className = (id === 'tabela') ? 'active-section' : 'hidden-section';
             window.scrollTo(0,0);
         }
 
         window.onload = () => {
             renderMatches();
+            calcularTabela();
             renderizarArtilharia();
         };
     </script>
