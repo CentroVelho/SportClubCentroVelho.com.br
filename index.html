@@ -221,7 +221,7 @@
                 </div>
 
                 <div class="bg-white rounded-b-xl shadow-lg border border-[#D4AF37] border-t-0 overflow-x-auto relative">
-                    <table class="w-full text-left border-collapse min-w-[650px]">
+                    <table class="w-full text-left border-collapse min-w-[600px]">
                         <thead>
                             <tr class="bg-black text-[#D4AF37] uppercase text-xs md:text-sm tracking-wider">
                                 <th class="p-3 text-center w-12 font-black">Pos</th>
@@ -232,7 +232,6 @@
                                 <th class="p-3 text-center">E</th>
                                 <th class="p-3 text-center">D</th>
                                 <th class="p-3 text-center">GP</th>
-                                <th class="p-3 text-center">GC</th>
                                 <th class="p-3 text-center">SG</th>
                             </tr>
                         </thead>
@@ -435,7 +434,6 @@
                         <td class="p-3 text-center text-gray-500">${t.e}</td>
                         <td class="p-3 text-center text-red-600 font-bold">${t.d}</td>
                         <td class="p-3 text-center text-gray-600">${t.gp}</td>
-                        <td class="p-3 text-center text-gray-600">${t.gc}</td>
                         <td class="p-3 text-center font-bold ${t.sg > 0 ? 'text-green-600' : t.sg < 0 ? 'text-red-600' : 'text-gray-500'}">${t.sg > 0 ? '+' + t.sg : t.sg}</td>
                     </tr>
                 `;
