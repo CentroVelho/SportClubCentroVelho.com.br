@@ -424,9 +424,11 @@
                 tbody.innerHTML += `
                     <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                         <td class="p-3 text-center font-black text-gray-500">${index + 1}º</td>
-                        <td class="p-3 font-bold text-gray-800 uppercase text-xs md:text-sm flex items-center">
-                            <img src="${logoSrc}" onerror="this.src='https://placehold.co/30x30/000/D4AF37?text=LOGO'" class="table-team-logo" alt="${t.nome}">
-                            <span class="${t.nome.includes('Centro Velho') ? 'gold-text' : ''}">${t.nome}</span>
+                        <td class="p-3 font-bold text-gray-800 uppercase text-xs md:text-sm">
+                            <div class="flex items-center whitespace-nowrap">
+                                <img src="${logoSrc}" onerror="this.src='https://placehold.co/30x30/000/D4AF37?text=LOGO'" class="table-team-logo" alt="${t.nome}">
+                                <span class="${t.nome.includes('Centro Velho') ? 'gold-text' : ''}">${t.nome}</span>
+                            </div>
                         </td>
                         <td class="p-3 text-center font-black text-base gold-text">${t.p}</td>
                         <td class="p-3 text-center text-gray-600">${t.j}</td>
